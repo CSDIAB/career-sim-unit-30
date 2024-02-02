@@ -46,6 +46,8 @@ const FAQ = ()=> {
   return (
     <div>
       <h1>FAQ</h1>
+      <p>What is Book Buddy?</p>
+      <p>Book Buddy is a web application that allows you to reserve books from a library.</p>
     </div>
   );
 }
@@ -84,21 +86,26 @@ const AuthForm = ({ submit, buttonText })=> {
   return (
     <form onSubmit={ _submit }>
       <input
+        id = 'email'
         placeholder='email'
         value={ email }
         onChange={ ev => setEmail(ev.target.value) }
       />
       <input
+        id = 'password'
+        type='password'
         placeholder='password'
         value={ password }
         onChange={ ev => setPassword(ev.target.value) }
       />
+     
       <button> {buttonText} </button>
     </form>
   );
 };
 
 //I need to change something with this component to make the register section read register and login reads login. 
+//<div>{ this.getElementById("password").getAttribute("value").length == 0 || this.getElementById("email").getAttribute("value").length == 0 ? 
 
 const Login = ({ login })=> {
   return (

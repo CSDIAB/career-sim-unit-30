@@ -38,3 +38,12 @@ nav > button {
 }
 
 
+
+  ul {
+    display: flex;
+    flex-wrap: wrap; 
+  }
+  li {
+    flex-basis:25%
+  }
+  
