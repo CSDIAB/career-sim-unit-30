@@ -42,6 +42,13 @@ const Home = ()=> {
     </div>
   );
 }
+const FAQ = ()=> {
+  return (
+    <div>
+      <h1>FAQ</h1>
+    </div>
+  );
+}
 const Books = ({ books, reserve, reservations, unreserve })=> {
   return (
     <ul>
@@ -50,7 +57,7 @@ const Books = ({ books, reserve, reservations, unreserve })=> {
           const _reservations = reservations.filter( reservation => reservation.title === book.title);
           return (
             <li key={ book.id }>
-              <h1>{ book.title }</h1>
+              <a href = '#'>{ book.title }</a>
               {
                 _reservations.length ? <button onClick={ ()=> unreserve(_reservations[0])}>-</button>: null
               }
@@ -64,7 +71,10 @@ const Books = ({ books, reserve, reservations, unreserve })=> {
   );
 };
 
-const AuthForm = ({ submit })=> {
+//[ ] The book detail page should display the title, author, and coverimage
+
+const AuthForm = ({ submit, buttonText })=> {
+  console.log(buttonText);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const _submit = ev => {
@@ -83,16 +93,18 @@ const AuthForm = ({ submit })=> {
         value={ password }
         onChange={ ev => setPassword(ev.target.value) }
       />
-      <button> submit </button>
+      <button> {buttonText} </button>
     </form>
   );
 };
+
+//I need to change something with this component to make the register section read register and login reads login. 
 
 const Login = ({ login })=> {
   return (
     <div>
       <h2>Login</h2>
-      <AuthForm submit={ login }/>
+      <AuthForm buttonText = 'login' submit={ login }/>
     </div>
   );
 };
@@ -101,7 +113,7 @@ const Register = ({ register })=> {
   return (
     <div>
       <h2>Register</h2>
-      <AuthForm submit ={ register }/>
+      <AuthForm buttonText = 'register' submit ={ register }/>
     </div>
   );
 };
@@ -247,6 +259,9 @@ function App() {
       <nav>
         <Link to='/'>Home</Link>
         <Link to='/books'>Books</Link>
+        <Link to='/authors'>Authors</Link>
+        <Link to= '/FAQ'>FAQ</Link>
+
         {
           auth.id ? <button onClick={ logout }>Welcome {auth.email } Click to logout</button>: null
         }
@@ -264,6 +279,12 @@ function App() {
           path='/'
           element={
             <Home />
+          }
+        />
+        <Route
+          path='/FAQ'
+          element={
+            <FAQ />
           }
         />
         <Route

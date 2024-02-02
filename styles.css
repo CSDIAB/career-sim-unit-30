@@ -28,3 +28,13 @@ nav > button {
   text-decoration: dashed;
   color: orange;
 }
+
+/*A media query should be used so that on screen widths less than 700px only show 1 book per line.*/
+
+@media (max-width: 700px) {
+  .book {
+    width: 100%;
+  }
+}
+
+
