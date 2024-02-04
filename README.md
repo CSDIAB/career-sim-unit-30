@@ -23,17 +23,17 @@ Each task below is worth a max of 2 points. Total of 36 points. The two extra cr
 
 ```
 [ ] Format the navbar and logout button using flexbox --
-[ ] Indicate if the user is on the Home page or the Books page - do on my own
+[ ] Indicate if the user is on the Home page or the Books page - 1
 [ ] The button for the register and login forms both are labeled submit. The button on the login form should be labled login, and the button on the register form should be labeled register. --
 [ ] Don't show the password in the register and login forms. --
-[ ] The button on the login and register form should be disabled if an email or password is blank. - 1
+[ ] The button on the login and register form should be disabled if an email or password is blank. --
 [ ] A non logged in user should not see the buttons for reserving and unreserving books or reservation counts (currently it throws an error when the buttons are clicked. Don't attempt to fix the error, just make sure the buttons are not shown to a non logged in user) - 2
-[ ] The book listing page should also display the author of each book -3
+[ ] The book listing page should also display the author of each book --
 [ ] The books page currently displays all the books vertically. Instead the books should be displayed with 4 books per line. --
 [ ] A media query should be used so that on screen widths less than 700px only show 1 book per line. --
-[ ] A book detail page needs to be added. A user should be able to click on book title and see a detail page with the following format /books/:id - 4
-[ ] The book detail page should display the title, author, and coverimage -5
-[ ] The book detail page should have a link back to all the books
+[ ] A book detail page needs to be added. A user should be able to click on book title and see a detail page with the following format /books/:id - 3
+[ ] The book detail page should display the title, author, and coverimage -4
+[ ] The book detail page should have a link back to all the books -5
 [ ] For a logged in user, the home page should show the total number of reservations a user currently has.- 6
 [ ] For a logged in user, the Books link in the navbar should display the number of reservations a user currently has. -7
 [ ] For a logged in user, if a book is not reserved, the reservation message for 0 books should not be shown. -8
