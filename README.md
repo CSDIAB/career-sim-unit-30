@@ -33,7 +33,7 @@ Each task below is worth a max of 2 points. Total of 36 points. The two extra cr
 [ ] A media query should be used so that on screen widths less than 700px only show 1 book per line. --
 [ ] A book detail page needs to be added. A user should be able to click on book title and see a detail page with the following format /books/:id - 3
 [ ] The book detail page should display the title, author, and coverimage -4
-[ ] The book detail page should have a link back to all the books -5
+[ ] The book detail page s hould have a link back to all the books -5
 [ ] For a logged in user, the home page should show the total number of reservations a user currently has.- 6
 [ ] For a logged in user, the Books link in the navbar should display the number of reservations a user currently has. -7
 [ ] For a logged in user, if a book is not reserved, the reservation message for 0 books should not be shown. -8

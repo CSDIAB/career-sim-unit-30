@@ -59,7 +59,7 @@ const Books = ({ books, reserve, reservations, unreserve })=> {
           const _reservations = reservations.filter( reservation => reservation.title === book.title);
           return (
             <li key={ book.id }>
-              <a href = '#'>{ book.title }</a>
+              <Link to = {`/books/${book.id}`} > { book.title }</Link>
               <em> by { book.author }</em>
               {
                 _reservations.length ? <button onClick={ ()=> unreserve(_reservations[0])}>-</button>: null
@@ -73,19 +73,34 @@ const Books = ({ books, reserve, reservations, unreserve })=> {
     </ul>
   );
 };
+//bookdetail
+const Bookdetail = ()=> {
+  return (
+    <div>
+      <h2>{ book.title }</h2>
+      <h3>by { book.author }</h3>
+      <img src={ book.coverImage } />
+    </div>
+  );
+};
 
 //[ ] The book detail page should display the title, author, and coverimage
 
 const AuthForm = ({ submit, buttonText })=> {
-  console.log(buttonText);
+  const [error, setError] = React.useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const _submit = ev => {
+  const _submit = async (ev) => {
     ev.preventDefault();
-    submit({ email, password});
+    try { await submit({ email, password});}
+    catch (ex) {
+      setError(ex);
+      //setError(message);
+    }
   }
   return (
     <form onSubmit={ _submit }>
+      <div>{error}</div>
       <input
         id = 'email'
         placeholder='email'
@@ -137,6 +152,7 @@ function App() {
   const [books, setBooks] = useState([]);
   const [reservations, setReservations] = useState([]);
   const [auth, setAuth] = useState({});
+
 
   useEffect(()=> {
     if(window.localStorage.getItem('token')){
@@ -250,8 +266,11 @@ function App() {
     }
     else {
       const json = await response.json();
-      console.log(json);
-      return(<alert>Error logging in</alert>);
+      console.log(json.message);
+      throw json.message;
+      //setError(json.message);
+// 1 why is this line not working?I tried passing something to setError and it didnt work either.
+
     }
   };
 
@@ -304,16 +323,17 @@ function App() {
           }
         />
         <Route
-          path='/books'
-          element={
-            <Books
-              books={ books }
-              reserve={ reserve }
-              unreserve={ unreserve }
-              reservations= { reservations }
-            />
-          }
+  path='/books'
+  element=
+  {
+        <Books
+          books={books}
+          reserve={reserve}
+          unreserve={unreserve}
+          reservations={reservations}
         />
+  }
+/>
       </Routes>
     </div>
   );
