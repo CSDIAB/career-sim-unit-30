@@ -63,9 +63,7 @@ const Books = ({ books, reserve, reservations, unreserve, auth })=> {
             <li key={ book.id }>
               <Link to = {`/books/${book.id}`} > { book.title }</Link>
               <em> by { book.author }</em>
-              {
-                _reservations.length ? <button onClick={ ()=> unreserve(_reservations[0])}>-</button>: null
-              }
+              {auth.id ? <button onClick={ ()=> unreserve(_reservations[0])}>-</button>: null}
               {auth.id ? <button onClick={ ()=> reserve(book)}>+</button> : null }
               {_reservations.length == 1 ?  <em>You have reserved this book { _reservations.length } time</em>: null}
               {_reservations.length > 1 ?  <em>You have reserved this book { _reservations.length } times</em>: null}
@@ -297,15 +295,15 @@ function App() {
     window.localStorage.removeItem('token');
     setAuth({});
   };
-  
+
   return (
     <div>
       <h1>Book Buddy ({ books.length })</h1>
       <nav>
-        <Link to='/'>Home</Link>
-        <Link to='/books'>Books{auth.id ? <em>{reservations.length}</em>: null} </Link>
-        <Link to='/authors'>Authors</Link>
-        <Link to= '/FAQ'>FAQ</Link>
+        <Link to='/' class = 'btn'>Home </Link>
+        <Link to='/books' class = 'btn'>Books{auth.id ? <em>{reservations.length}</em>: null} </Link>
+        <Link to='/authors' class = 'btn'>Authors</Link>
+        <Link to= '/FAQ' class = 'btn'>FAQ</Link>
 
         {
           auth.id ? <button onClick={ logout }>Welcome {auth.email } Click to logout</button>: null
