@@ -47,5 +47,11 @@ nav > button {
     flex-basis:25%
   }
   
+img {
+  display:flex;
+  justify-content: center;
+  width: 50rem;
+  height: 50rem;
+ 
+}
 
-  

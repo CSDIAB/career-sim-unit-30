@@ -27,18 +27,18 @@ Each task below is worth a max of 2 points. Total of 36 points. The two extra cr
 [ ] The button for the register and login forms both are labeled submit. The button on the login form should be labled login, and the button on the register form should be labeled register. --
 [ ] Don't show the password in the register and login forms. --
 [ ] The button on the login and register form should be disabled if an email or password is blank. --
-[ ] A non logged in user should not see the buttons for reserving and unreserving books or reservation counts (currently it throws an error when the buttons are clicked. Don't attempt to fix the error, just make sure the buttons are not shown to a non logged in user) - 2
+[ ] A non logged in user should not see the buttons for reserving and unreserving books or reservation counts (currently it throws an error when the buttons are clicked. Don't attempt to fix the error, just make sure the buttons are not shown to a non logged in user) - 1/2 done I need books to show up I dont want to deny access to the whole list just that button.
 [ ] The book listing page should also display the author of each book --
 [ ] The books page currently displays all the books vertically. Instead the books should be displayed with 4 books per line. --
 [ ] A media query should be used so that on screen widths less than 700px only show 1 book per line. --
-[ ] A book detail page needs to be added. A user should be able to click on book title and see a detail page with the following format /books/:id - 3
-[ ] The book detail page should display the title, author, and coverimage -4
-[ ] The book detail page s hould have a link back to all the books -5
-[ ] For a logged in user, the home page should show the total number of reservations a user currently has.- 6
-[ ] For a logged in user, the Books link in the navbar should display the number of reservations a user currently has. -7
-[ ] For a logged in user, if a book is not reserved, the reservation message for 0 books should not be shown. -8
+[ ] A book detail page needs to be added. A user should be able to click on book title and see a detail page with the following format /books/:id --
+[ ] The book detail page should display the title, author, and coverimage --
+[ ] The book detail page s hould have a link back to all the books --
+[ ] For a logged in user, the home page should show the total number of reservations a user currently has.--
+[ ] For a logged in user, the Books link in the navbar should display the number of reservations a user currently has. --
+[ ] For a logged in user, if a book is not reserved, the reservation message for 0 books should not be shown. --
 [ ] The reservation message should have the correct grammer for a book reserved one time and more than one time. (you reserved this book 1 time vs. you reserved this book 2 times) -9
-[ ] Display an error message on the login and registration forms if login was not successful. - 10
+[ ] Display an error message on the login and registration forms if login was not successful. --
 [ ] Add a link to the navbar named FAQ's. Clicking on that link should go to the faq route and show an faq component. Feel free to add some content which describes the application. -- done
 
 ** extra credit **

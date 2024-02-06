@@ -35,10 +35,12 @@ import {
 } from 'react-router-dom';
 const { useState, useEffect } = React;
 
-const Home = ()=> {
+const Home = ({auth, reservations})=> {
+  
   return (
     <div>
       <h1>Welcome to Book Buddy</h1>
+      {auth.id ? <h1>{reservations.length}</h1>: null}
     </div>
   );
 }
@@ -51,7 +53,7 @@ const FAQ = ()=> {
     </div>
   );
 }
-const Books = ({ books, reserve, reservations, unreserve })=> {
+const Books = ({ books, reserve, reservations, unreserve, auth })=> {
   return (
     <ul>
       {
@@ -64,8 +66,9 @@ const Books = ({ books, reserve, reservations, unreserve })=> {
               {
                 _reservations.length ? <button onClick={ ()=> unreserve(_reservations[0])}>-</button>: null
               }
-              <button onClick={ ()=> reserve(book)}>+</button>
-              You have reserved this book { _reservations.length } time
+              {auth.id ? <button onClick={ ()=> reserve(book)}>+</button> : null }
+              {_reservations.length == 1 ?  <em>You have reserved this book { _reservations.length } time</em>: null}
+              {_reservations.length > 1 ?  <em>You have reserved this book { _reservations.length } times</em>: null}
             </li>
           );
         })
@@ -74,12 +77,19 @@ const Books = ({ books, reserve, reservations, unreserve })=> {
   );
 };
 //bookdetail
-const Bookdetail = ()=> {
+const Bookdetail = ({books})=> {
+  const params = useParams();
+  const id = params.id*1;
+  const book = books.find(book => book.id === id);
+  if(!book){
+    return null;
+  }
   return (
     <div>
       <h2>{ book.title }</h2>
       <h3>by { book.author }</h3>
-      <img src={ book.coverImage } />
+      <img src={ book.coverimage } />
+      <Link to='/book'>Back to books</Link>
     </div>
   );
 };
@@ -293,7 +303,7 @@ function App() {
       <h1>Book Buddy ({ books.length })</h1>
       <nav>
         <Link to='/'>Home</Link>
-        <Link to='/books'>Books</Link>
+        <Link to='/books'>Books{auth.id ? <em>{reservations.length}</em>: null} </Link>
         <Link to='/authors'>Authors</Link>
         <Link to= '/FAQ'>FAQ</Link>
 
@@ -311,9 +321,18 @@ function App() {
       }
       <Routes>
         <Route
+          path='/books/:id'
+          element={
+            <Bookdetail books = {books} />
+          }
+        />
+        <Route
           path='/'
           element={
-            <Home />
+            < Home 
+            auth = {auth}
+            reservations = {reservations}    
+            />
           }
         />
         <Route
@@ -331,10 +350,15 @@ function App() {
           reserve={reserve}
           unreserve={unreserve}
           reservations={reservations}
+          auth={auth}
         />
+        
+        
   }
+  
 />
       </Routes>
+     
     </div>
   );
   
